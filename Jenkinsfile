@@ -11,17 +11,18 @@ pipeline {
             }
             steps {
                 sh '''
+                    cleanWs()
                     ls -la
                     node --version
                     npm --version
-                    npm ci
+                    npm install
                     npm run build
                     ls -la
                 '''
             }
         }
 
-        stage('Test') {
+        stage('Test Praveen') {
             agent {
                 docker {
                     image 'node:18-alpine'
