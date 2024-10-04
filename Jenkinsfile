@@ -1,4 +1,3 @@
-
 pipeline {
     agent any
 
@@ -12,18 +11,17 @@ pipeline {
             }
             steps {
                 sh '''
-                    cleanWs()
                     ls -la
                     node --version
                     npm --version
-                    npm install
+                    npm ci
                     npm run build
                     ls -la
                 '''
             }
         }
 
-        stage('Test Praveen') {
+        stage('Test') {
             agent {
                 docker {
                     image 'node:18-alpine'
@@ -38,10 +36,11 @@ pipeline {
                 '''
             }
         }
-	post {
-		always {
-			junit 'test-results/junit.xml'
-		}
-		}
+    }
+
+    post {
+        always {
+            junit 'test-results/junit.xml'
+        }
     }
 }
