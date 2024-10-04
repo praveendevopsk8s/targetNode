@@ -1,3 +1,4 @@
+
 pipeline {
     agent any
 
@@ -37,5 +38,10 @@ pipeline {
                 '''
             }
         }
+		post {
+		always {
+		junit 'test-result'
+		}
+		}
     }
 }
