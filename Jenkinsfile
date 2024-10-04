@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     stages {
-        stage('Build with Docker') {
+        stage('Build') {
             agent {
                 docker {
                     image 'node:18-alpine'
@@ -11,13 +11,13 @@ pipeline {
             }
             steps {
                 sh '''
-                cleanWs()
-                echo "Building with Docker"
-                nod --version 
-                npm --version
-                npm install
-                npm run build
-                ls -la				
+                    cleanWs()
+                    ls -la
+                    node --version
+                    npm --version
+                    npm install
+                    npm run build
+                    ls -la
                 '''
             }
         }
