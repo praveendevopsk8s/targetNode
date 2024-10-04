@@ -12,9 +12,11 @@ pipeline {
                 sh '''
                 cleanWs()
                 echo "Building with Docker"
-                noe --version 
+                nod --version 
                 npm --version
                 npm install
+                npm run build
+                ls -la				
                 '''
             }
         }
