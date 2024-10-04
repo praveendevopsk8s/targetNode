@@ -38,10 +38,10 @@ pipeline {
                 '''
             }
         }
-		post {
+ 	    post {
 		always {
-		junit 'test-result'
-		}
+			junit 'test-result'
+			}
 		}
     }
 }
